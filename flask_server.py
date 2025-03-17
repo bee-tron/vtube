@@ -10,14 +10,14 @@ def get_frames():
     while True:
         time.sleep(1/30)
         # Wait for the render to complete
-        while not os.path.exists('/home/bee_tron/admin:///media/bee_tron/STEAM/tmp/render_done'):
+        while not os.path.exists('/media/bee_tron/STEAM/tmp/render_done'):
             time.sleep(1/30)
 
         # Remove the done signal
-        os.remove('/home/bee_tron/admin:///media/bee_tron/STEAM/tmp/render_done')
+        os.remove('/media/bee_tron/STEAM/tmp/render_done')
 
         # Read the rendered frame
-        frame = cv2.imread('/home/bee_tron/admin:///media/bee_tron/STEAM/tmp/render.jpg')
+        frame = cv2.imread('/media/bee_tron/STEAM/tmp/render.jpg')
         if frame is not None:
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
